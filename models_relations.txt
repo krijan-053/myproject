@@ -1,0 +1,100 @@
+There are three types aof table relations
+1. One -to -One relation
+2. One -to-many relation (many-to-One)
+3. Many-to- MAny RElation
+
+# In Such table relations the objects of one table is referred in the other table using
+
+
+Related Names
+# Related Names are the names(string) used in the model relations in django
+# These related names are used in the reverse relation.Lets take and example.
+
+        There is a "Classroom" model
+        There ia another "Student" model which has "Classroom" as a ForeignKey
+
+        Now to Access data of classroom from student object,it is a forward relation.
+        But
+
+
+
+
+classroom = ClassRoom.objects.filter(classroom_student__name= "jack")
+
+student=StudentProfile.objects.create(address="Bkm",phone_no="0987654321",email="ram@ram.com",student_id=8)
+
+Students.objects.filter(studentprofile__address="KTM")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.............................................
+>>> p1 = publication.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'publication' is not defined
+>>> p1 = Publication.objects.get(id=1)
+>>> p1
+<Publication: Publication object (1)>
+>>> a1 = Article.objects.create(headline="Article1")
+>>> a1
+<Article: Article1>
+>>> a2 = Article.objects.create(headline="Article2")
+>>> a3 = Article.objects.create(headline="Article3")
+>>> a1.publication.add(p1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Article' object has no attribute 'publication'
+>>> a1.publications.add(p1)
+>>> p2 = publication.objects.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'publication' is not defined
+>>> p2 = Publication.objects.get(id=2)
+>>> p2
+<Publication: Publication object (2)>
+>>> a1.publications.add(p1)
+>>> a1.publications.add(p2)
+>>> a1.publication.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Article' object has no attribute 'publication'
+>>> a1.publications.all()
+<QuerySet [<Publication: Publication object (1)>, <Publication: Publication object (2)>]>
+>>> a1.publication.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Article' object has no attribute 'publication'
+>>> a1.publications.all()
+<QuerySet [<Publication: Publication object (1)>, <Publication: Publication object (2)>]>
+>>> Article.objects.filter(publications=1)
+<QuerySet [<Article: Article1>]>
+>>> Publication.objects.filter(article=a1)
+<QuerySet [<Publication: Publication object (1)>, <Publication: Publication object (2)>]>
+>>> pa.article_set.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'pa' is not defined
+>>> p1.article_set.all()
+<QuerySet [<Article: Article1>]>
+>>> p1.article_set.add(a2)
+>>> a1.publication.remove(p1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Article' object has no attribute 'publication'
+>>> a1.publications.remove(p1)
+>>> p1.article_set.remove(a2)
+>>>
+
+

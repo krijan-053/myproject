@@ -1,0 +1,14 @@
+{% extends "form/base.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2> Name: {{ student.name }}</h2>
+    <h2> Age: {{ student.age }}</h2>
+    <h2> Department: {{ student.department }}</h2>
+    {% if student.profile_picture %}
+        <img src="{{ student.profile_picture.url }}" style="height: 100px; width: 100px">
+    {% endif %}
+{% endblock %}

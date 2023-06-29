@@ -1,0 +1,21 @@
+{% extends "form/base.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div style="margin-top: 30px">
+    <a href="{% url 'crud_home' %}" class="btn btn-primary" style="float: right">Home</a>
+    <img src="{{ student.profile_picture.url }}" style="height: 200px; width; 200px; border-radius:50%">
+    <br>
+    <br>
+    Name:{{ object.name }} <br>
+    Age: {{ object.age }}<br>
+    Department: {{ object.department }}<br>
+    Classroom: {{ object.classroom.name }}<br>
+    Address: {{ object.studentprofile.address }}<br>
+    Phone Number: {{ object.studentprofile.phone_no }}<br>
+    Email: {{ object.studentprofile.email }}<br>
+
+
+</div>
+{% endblock %}

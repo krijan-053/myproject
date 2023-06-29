@@ -1,0 +1,16 @@
+{% extends "form/base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 30px">
+    <h1>Are you sure you want to delete classroom {{classroom.name}}?</h1>
+    <form method="post" action="{% url 'classroom_delete' classroom.id %} " >
+        {% csrf_token %}
+        <a href="{% url 'crud_classroom' %}" class="btn btn-primary">Cancel</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+{% endblock %}

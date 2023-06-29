@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+        body {
+        background: aqua;
+        }
+        h1 {
+        color : firebrick;
+        }
+    </style>
+</head>
+<body>
+
+<div class = "container">
+    <h1 >I am from index page</h1>
+    <h1>Info</h1>
+    {% for student in students %}
+        {% if student.is_active %}
+            Id: {{ student.id }}<br>
+            Name: {{ student.name }}<br>
+            Age: {{ student.age }}<br>
+        {% endif %}
+
+    {% endfor %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Department</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+            <th>{{ forloop.counter }}</th>
+            <td>{{ student.id }}<br></td>
+            <td>{{ student.name }}<br></td>
+            <td>{{ student.age }}<br></td>
+            <td>{{ student.department }}<br></td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

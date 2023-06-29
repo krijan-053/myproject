@@ -1,0 +1,83 @@
+# ORMs in Django
+    => ORM stands for Object Relational Mapping
+    => It is the way to query the database using python code rather than raw sql query.
+# Simple CRUD in a table using ORM
+    Create
+    => Student.objects.create(name="jane",age=21,department= "CSS"
+     Read
+     => Student.object.all() => It gives all the queryset
+     => Student.objects.filter(name="jon")  =>[obj1,obj2,obj3]
+     => Student.objects.get(id=1)           => obj1
+
+
+    .get()
+    1. If there is no data then it returns ObjectDoesNotExist exception
+    2. If there is are more than one data it returns MultipleObjectsReturned exception
+    3. Above two condition imply that we should always use get with unique fields (id,username,email,phone )
+    4. Always use .grt() in try_except block
+       try:
+            s = Student.objects.get(id=20)
+       except:
+            print("invalid Id")
+
+    .filter()
+    1. filter method returns queryset.
+    2. Queryset is a list-like object with objects as its elements.
+        [obj1,obj2,obj3]
+    3. But queryset differs from list in many ways:
+            => list is mutable but queryset is immutable
+            => List support negative indexing but queryset does not support negative indexing
+
+    4.
+
+    Update
+    Student.objects.filter(id=1).update(name="Jon")
+    => update() method should always be used in queryset
+    => The update is made in all the data of the ...
+
+
+    Delete
+    Student.objects.
+
+
+
+# Accessing the  data from results of ORM
+s = Student.objects.get(id=1)
+s.name s.age s.department  s.id
+
+students = Students.objects.filter(department ="Electrical"
+for student in students:
+    print(student.name,student.age,student.department)
+
+Student.objects.
+
+
+
+
+Student.objects.all().order_by("name")
+Student.objects.all().order_by("-name")
+Student.objects.all().[0:3]
+Student.objects.filter(age__gt=18)  greater than   .lt = less than,  .lte = less than equels
+Student.objects.filter(name__startswith="J")
+Student.objects.filter(name__endswith="y")
+Student.objects.filter(name__contains ="y")
+
+
+Student.objects.filter(department:"IT" ,department:"Electrical")    And relation
+Student.objects.filter(Q(department:"IT") | Q(department:"Electrical"))    OR relation
+Student.objects.filter(Q(department:"IT") | Q(department:"Electrical"),name = "John")    OR  & AND relation
+Student.objects.exclude(department:"IT")        Exclude
+
+Student.objects.filter(classroom = None)
+Student.objects.filter(classroom__isnull=True)
+
+Student.objects.filter(classroom__isnull=False)
+
+len(Student.objects.count())
+Student.objects.count()
+
+Student.objects.filter(classroom__isnull)  to be continue
+
+
+
+

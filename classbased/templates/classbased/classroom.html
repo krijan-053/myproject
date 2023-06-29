@@ -1,0 +1,39 @@
+{% extends "form/base.html" %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+  <div style="margin-top: 30px">
+    <a href="{% url 'crud_home' %}" class="btn btn-primary" style="float: right">Home</a>
+    <h1> Class Rooms</h1>
+    <form method="post" action="{% url 'crud_classroom'%}">
+      {% csrf_token %}
+      <input placeholder="class name" name="class_name">
+      <button type="submit" class="btn btn-success">Create Class</button>
+    </form>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">S.N</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for class in classrooms %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ class.name }}</td>
+        <td>
+            <a class="btn btn-danger" href="{% url 'classroom_delete' class.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+  </div>
+{% endblock %}
